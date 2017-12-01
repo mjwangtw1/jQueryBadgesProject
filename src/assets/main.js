@@ -1,5 +1,5 @@
 $(function() {
-  console.log(0946);
+  console.log(0951);
   // your code will go here
   var myReportCard = 'https://www.codeschool.com/users/mjwang.json';
   $.ajax({
@@ -8,15 +8,11 @@ $(function() {
     success: function(response) {
       // handle response
       $.each(response.courses.completed, function(key, value){
-        //currentBadges = value.badge;
-        value.badge = '<div class="course">' + value.badge + '</div>';
-        value.title = '<h3>' + value.title + '</h3>';
-        value.img = value.badge;
-      
-        value.a = '<a href="' + value.url + '" target="_blank" class="btn btn-primary">';
-        console.log(value);
 
-        //console.log(value.badge);
+        var content = '<div class="course"><h3>' + value.title + 
+                      '</h3><img src="' + value.badge + '"><a href="' + value.url + '" target="_blank" class="btn btn-primary">See Course</a></div>';
+
+        $('#badges').append(content);
       });
 
     }
